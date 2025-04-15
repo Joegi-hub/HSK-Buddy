@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Globe } from "lucide-react";
 
 const locales = ['ko', 'en', 'zh', 'ja', 'fr'];
 
@@ -26,7 +27,7 @@ const LanguageSwitcher = () => {
     <div className="fixed top-4 right-4 z-50">
       <DropdownMenu>
         <DropdownMenuTrigger>
-          언어 선택
+            <Globe className="w-5 h-5" />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           {locales.map((locale) => (
