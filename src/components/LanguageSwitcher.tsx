@@ -10,7 +10,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
 
-const locales = ['ko', 'en', 'zh', 'ja', 'fr'];
+const locales = [
+  { locale: 'ko', label: '한국어' },
+  { locale: 'en', label: 'English' },
+  { locale: 'zh', label: '中国(普通话)' },
+  { locale: 'ja', label: '日本語' },
+  { locale: 'fr', label: 'Français' },
+];
 
 const LanguageSwitcher = () => {
   const router = useRouter();
@@ -27,12 +33,12 @@ const LanguageSwitcher = () => {
     <div className="fixed top-4 right-4 z-50">
       <DropdownMenu>
         <DropdownMenuTrigger>
-            <Globe className="w-5 h-5" />
+          <Globe className="w-5 h-5" />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {locales.map((locale) => (
-            <DropdownMenuItem key={locale} onClick={() => handleLocaleChange(locale)}>
-              {locale.toUpperCase()}
+          {locales.map((item) => (
+            <DropdownMenuItem key={item.locale} onClick={() => handleLocaleChange(item.locale)}>
+              {item.label}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
