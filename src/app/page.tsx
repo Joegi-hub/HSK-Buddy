@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -11,12 +10,12 @@ import { Toaster } from "@/components/ui/toaster";
 export default function Home() {
   return (
     <div className="container mx-auto py-10">
-      <h1 className="text-3xl font-bold mb-6">HSK Buddy</h1>
-      <Tabs defaultvalue="wordInput">
+      <h1 className="text-3xl font-bold mb-6">HSK 버디</h1>
+      <Tabs defaultValue="wordInput">
         <TabsList className="mb-4">
-          <TabsTrigger value="wordInput">Word Input</TabsTrigger>
-          <TabsTrigger value="wordPractice">Word Practice</TabsTrigger>
-          <TabsTrigger value="writingPractice">Writing Practice</TabsTrigger>
+          <TabsTrigger value="wordInput">단어 입력</TabsTrigger>
+          <TabsTrigger value="wordPractice">단어 연습</TabsTrigger>
+          <TabsTrigger value="writingPractice">작문 연습</TabsTrigger>
         </TabsList>
         <TabsContent value="wordInput">
           <WordInputForm />

@@ -42,8 +42,8 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
     // Basic validation
     if (!hanzi || !pinyin || !meaning) {
       toast({
-        title: "Error",
-        description: "Hanzi, Pinyin, and meaning are required.",
+        title: "오류",
+        description: "한자, 병음, 뜻은 필수 입력 항목입니다.",
         variant: "destructive",
       });
       return;
@@ -60,8 +60,8 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
     console.log("Form submitted with data:", newWord);
 
     toast({
-      title: "Success",
-      description: `Word "${hanzi}" added successfully!`,
+      title: "성공",
+      description: `"${hanzi}" 단어가 성공적으로 추가되었습니다!`,
     });
 
     // Clear the form
@@ -80,14 +80,14 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Enter New HSK Word</CardTitle>
-        <CardDescription>Input the Hanzi, Pinyin, meaning, and example sentences.</CardDescription>
+        <CardTitle>새 HSK 단어 입력</CardTitle>
+        <CardDescription>한자, 병음, 뜻, 예시 문장을 입력하세요.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div>
             <label htmlFor="hanzi" className="block text-sm font-medium leading-6 text-gray-900">
-              Hanzi
+              한자
             </label>
             <div className="mt-2">
               <Input
@@ -95,7 +95,7 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
                 id="hanzi"
                 value={hanzi}
                 onChange={(e) => setHanzi(e.target.value)}
-                placeholder="Enter Hanzi"
+                placeholder="한자 입력"
                 required
                 className="w-full"
               />
@@ -103,7 +103,7 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
           </div>
           <div>
             <label htmlFor="pinyin" className="block text-sm font-medium leading-6 text-gray-900">
-              Pinyin
+              병음
             </label>
             <div className="mt-2">
               <Input
@@ -111,7 +111,7 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
                 id="pinyin"
                 value={pinyin}
                 onChange={(e) => setPinyin(e.target.value)}
-                placeholder="Enter Pinyin"
+                placeholder="병음 입력"
                 required
                 className="w-full"
               />
@@ -119,14 +119,14 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
           </div>
           <div>
             <label htmlFor="meaning" className="block text-sm font-medium leading-6 text-gray-900">
-              Meaning
+              의미
             </label>
             <div className="mt-2">
               <Textarea
                 id="meaning"
                 value={meaning}
                 onChange={(e) => setMeaning(e.target.value)}
-                placeholder="Enter Meaning"
+                placeholder="의미 입력"
                 required
                 className="w-full"
               />
@@ -134,7 +134,7 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
           </div>
           <div>
             <label className="block text-sm font-medium leading-6 text-gray-900">
-              Example Sentences
+              예시 문장
             </label>
             {exampleSentences.map((sentence, index) => (
               <div key={index} className="mt-2 flex gap-2">
@@ -142,7 +142,7 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
                   type="text"
                   value={sentence}
                   onChange={(e) => handleExampleSentenceChange(index, e.target.value)}
-                  placeholder={`Example Sentence ${index + 1}`}
+                  placeholder={`예시 문장 ${index + 1}`}
                   className="flex-grow"
                 />
                 <Button
@@ -156,10 +156,10 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
               </div>
             ))}
             <Button type="button" variant="secondary" onClick={handleAddExampleSentence} className="mt-2">
-              Add Example Sentence
+              예시 문장 추가
             </Button>
           </div>
-          <Button type="submit">Submit</Button>
+          <Button type="submit">제출</Button>
         </form>
       </CardContent>
     </Card>

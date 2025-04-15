@@ -45,22 +45,22 @@ const WordPractice: React.FC<WordPracticeProps> = () => {
   const handleDeleteWord = () => {
     // In a real app, you'd handle deletion from your data store
     toast({
-      title: "Word Deleted",
-      description: `"${currentWord.hanzi}" has been deleted.`,
+      title: "단어 삭제",
+      description: `"${currentWord.hanzi}"가 삭제되었습니다.`,
     });
   };
 
   const handleCorrectWord = () => {
     toast({
-      title: "Word Corrected",
-      description: `"${currentWord.hanzi}" has been marked as correct.`,
+      title: "단어 수정",
+      description: `"${currentWord.hanzi}"가 수정되었습니다.`,
     });
   };
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Word Practice</CardTitle>
+        <CardTitle>단어 연습</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="text-center text-4xl font-semibold">{currentWord.hanzi}</div>
@@ -68,9 +68,9 @@ const WordPractice: React.FC<WordPracticeProps> = () => {
 
         {showMeaning && (
           <div className="mt-4">
-            <div className="font-bold">Meaning:</div>
+            <div className="font-bold">의미:</div>
             <div>{currentWord.meaning}</div>
-            <div className="mt-2 font-bold">Example Sentences:</div>
+            <div className="mt-2 font-bold">예시 문장:</div>
             <ul>
               {currentWord.exampleSentences.map((sentence, index) => (
                 <li key={index}>{sentence}</li>
@@ -82,26 +82,26 @@ const WordPractice: React.FC<WordPracticeProps> = () => {
         <div className="flex justify-center gap-4 mt-4">
           <Button variant="outline" onClick={() => setShowMeaning(!showMeaning)}>
             <Eye className="w-4 h-4 mr-2" />
-            {showMeaning ? "Hide Meaning" : "See Meaning & Example"}
+            {showMeaning ? "의미 & 예시 보기" : "숨기기"}
           </Button>
         </div>
 
         <div className="flex justify-between mt-6">
           <Button variant="secondary" onClick={handlePreviousWord}>
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Previous
+            이전
           </Button>
           <Button variant="secondary" onClick={handleNextWord}>
-            Next
+            다음
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
 
         <div className="flex justify-between mt-4">
-          <Button onClick={handleCorrectWord}>Correct</Button>
+          <Button onClick={handleCorrectWord}>수정</Button>
           <Button variant="destructive" onClick={handleDeleteWord}>
             <Trash2 className="w-4 h-4 mr-2" />
-            Delete
+            삭제
           </Button>
         </div>
       </CardContent>

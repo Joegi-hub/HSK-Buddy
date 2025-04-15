@@ -48,24 +48,24 @@ const WritingPractice: React.FC<WritingPracticeProps> = () => {
   const handleCopyWriting = () => {
     navigator.clipboard.writeText(writingSample);
     toast({
-      title: "Copied!",
-      description: "Writing sample copied to clipboard.",
+      title: "복사 완료!",
+      description: "작문이 클립보드에 복사되었습니다.",
     });
   };
 
   const handleDeleteWriting = () => {
     setWritingSample("");
     toast({
-      title: "Deleted!",
-      description: "Writing sample cleared.",
+      title: "삭제 완료!",
+      description: "작문이 삭제되었습니다.",
     });
   };
 
   const handleGetFeedback = async () => {
     if (!writingSample) {
       toast({
-        title: "Error",
-        description: "Please enter a writing sample.",
+        title: "오류",
+        description: "작문을 입력해주세요.",
         variant: "destructive",
       });
       return;
@@ -78,14 +78,14 @@ const WritingPractice: React.FC<WritingPracticeProps> = () => {
       });
       setFeedback(result.feedback);
       toast({
-        title: "Feedback Generated!",
-        description: "AI feedback has been generated.",
+        title: "피드백 생성 완료!",
+        description: "AI 피드백이 생성되었습니다.",
       });
     } catch (error: any) {
       console.error("Error getting feedback:", error);
       toast({
-        title: "Error",
-        description: "Failed to generate feedback.",
+        title: "오류",
+        description: "피드백 생성에 실패했습니다.",
         variant: "destructive",
       });
     }
@@ -98,30 +98,30 @@ const WritingPractice: React.FC<WritingPracticeProps> = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Writing Practice</CardTitle>
+        <CardTitle>작문 연습</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <div>
-            <div className="font-bold">Presented Words:</div>
+            <div className="font-bold">제시된 단어:</div>
             <div>{presentedWords.join(", ")}</div>
           </div>
           <Button variant="secondary" onClick={handleRefreshWords}>
             <RefreshCcw className="w-4 h-4 mr-2" />
-            Refresh Words
+            단어 갱신
           </Button>
         </div>
 
         <div>
           <label htmlFor="writing" className="block text-sm font-medium leading-6 text-gray-900">
-            Writing Practice:
+            작문:
           </label>
           <div className="mt-2">
             <Textarea
               id="writing"
               value={writingSample}
               onChange={(e) => setWritingSample(e.target.value)}
-              placeholder="Write something using the presented words..."
+              placeholder="제시된 단어를 사용하여 문장을 작성하세요..."
               className="w-full"
             />
           </div>
@@ -130,18 +130,18 @@ const WritingPractice: React.FC<WritingPracticeProps> = () => {
         <div className="flex justify-end gap-2">
           <Button variant="outline" onClick={handleCopyWriting}>
             <Copy className="w-4 h-4 mr-2" />
-            Copy
+            복사
           </Button>
           <Button variant="destructive" onClick={handleDeleteWriting}>
             <Trash2 className="w-4 h-4 mr-2" />
-            Delete
+            삭제
           </Button>
         </div>
-        <Button onClick={handleGetFeedback}>Get AI Feedback</Button>
+        <Button onClick={handleGetFeedback}>AI 피드백 받기</Button>
 
         {feedback && (
           <div className="mt-4">
-            <div className="font-bold">AI Feedback:</div>
+            <div className="font-bold">AI 피드백:</div>
             <div>{feedback}</div>
           </div>
         )}
