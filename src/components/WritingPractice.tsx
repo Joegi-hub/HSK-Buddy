@@ -1,22 +1,27 @@
-
 "use client";
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { HSKWord } from "@/services/hsk-words";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Copy, RefreshCcw, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getWritingFeedback, WritingFeedbackOutput } from "@/ai/flows/writing-feedback";
 
+interface HSKWord {
+  hanzi: string;
+  pinyin: string;
+  meaning: string;
+  exampleSentences: string[];
+}
+
 const DUMMY_WORDS: HSKWord[] = [
-  { hanzi: "你好", meaning: "Hello", exampleSentences: ["你好世界！"] },
-  { hanzi: "谢谢", meaning: "Thanks", exampleSentences: ["谢谢你的帮助。"] },
-  { hanzi: "再见", meaning: "Goodbye", exampleSentences: ["明天再见！"] },
-  { hanzi: "朋友", meaning: "Friend", exampleSentences: ["他是我最好的朋友。"] },
-  { hanzi: "学习", meaning: "Study", exampleSentences: ["我喜欢学习汉语。"] },
-  { hanzi: "工作", meaning: "Work", exampleSentences: ["我在家工作。"] },
+  { hanzi: "你好", pinyin: "nǐ hǎo", meaning: "Hello", exampleSentences: ["你好世界！"] },
+  { hanzi: "谢谢", pinyin: "xiè xiè", meaning: "Thanks", exampleSentences: ["谢谢你的帮助。"] },
+  { hanzi: "再见", pinyin: "zài jiàn", meaning: "Goodbye", exampleSentences: ["明天再见！"] },
+  { hanzi: "朋友", pinyin: "péng you", meaning: "Friend", exampleSentences: ["他是我最好的朋友。"] },
+  { hanzi: "学习", pinyin: "xué xí", meaning: "Study", exampleSentences: ["我喜欢学习汉语。"] },
+  { hanzi: "工作", pinyin: "gōng zuò", meaning: "Work", exampleSentences: ["我在家工作。"] },
 ];
 
 interface WritingPracticeProps { }

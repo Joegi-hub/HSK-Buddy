@@ -7,6 +7,10 @@ export interface HSKWord {
    */
   hanzi: string;
   /**
+   * The Pinyin representation of the word.
+   */
+  pinyin: string;
+  /**
    * The meaning of the word.
    */
   meaning: string;
@@ -27,6 +31,7 @@ export async function getWordDetails(hanzi: string): Promise<HSKWord> {
 
   return {
     hanzi: hanzi,
+    pinyin: 'Example Pinyin',
     meaning: 'Example Meaning',
     exampleSentences: ['Example sentence 1', 'Example sentence 2'],
   };

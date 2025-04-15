@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState } from "react";
@@ -6,14 +5,21 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { HSKWord } from "@/services/hsk-words";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Copy, Trash2 } from "lucide-react";
 
 interface WordInputFormProps { }
 
+interface HSKWord {
+  hanzi: string;
+  pinyin: string;
+  meaning: string;
+  exampleSentences: string[];
+}
+
 const WordInputForm: React.FC<WordInputFormProps> = () => {
   const [hanzi, setHanzi] = useState("");
+  const [pinyin, setPinyin] = useState("");
   const [meaning, setMeaning] = useState("");
   const [exampleSentences, setExampleSentences] = useState([""]);
   const { toast } = useToast();
@@ -34,10 +40,10 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Basic validation
-    if (!hanzi || !meaning) {
+    if (!hanzi || !pinyin || !meaning) {
       toast({
         title: "Error",
-        description: "Hanzi and meaning are required.",
+        description: "Hanzi, Pinyin, and meaning are required.",
         variant: "destructive",
       });
       return;
@@ -46,6 +52,7 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
     // Here you would typically send the data to your backend
     const newWord: HSKWord = {
       hanzi,
+      pinyin,
       meaning,
       exampleSentences,
     };
@@ -59,6 +66,7 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
 
     // Clear the form
     setHanzi("");
+    setPinyin("");
     setMeaning("");
     setExampleSentences([""]);
   };
@@ -73,7 +81,7 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
     <Card>
       <CardHeader>
         <CardTitle>Enter New HSK Word</CardTitle>
-        <CardDescription>Input the Hanzi, meaning, and example sentences.</CardDescription>
+        <CardDescription>Input the Hanzi, Pinyin, meaning, and example sentences.</CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -88,6 +96,22 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
                 value={hanzi}
                 onChange={(e) => setHanzi(e.target.value)}
                 placeholder="Enter Hanzi"
+                required
+                className="w-full"
+              />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="pinyin" className="block text-sm font-medium leading-6 text-gray-900">
+              Pinyin
+            </label>
+            <div className="mt-2">
+              <Input
+                type="text"
+                id="pinyin"
+                value={pinyin}
+                onChange={(e) => setPinyin(e.target.value)}
+                placeholder="Enter Pinyin"
                 required
                 className="w-full"
               />

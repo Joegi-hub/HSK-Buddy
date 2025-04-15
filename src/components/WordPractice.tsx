@@ -1,17 +1,22 @@
-
 "use client";
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { HSKWord } from "@/services/hsk-words";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, Eye, RefreshCcw, Trash2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+interface HSKWord {
+  hanzi: string;
+  pinyin: string;
+  meaning: string;
+  exampleSentences: string[];
+}
+
 const DUMMY_WORDS: HSKWord[] = [
-  { hanzi: "你好", meaning: "Hello", exampleSentences: ["你好世界！"] },
-  { hanzi: "谢谢", meaning: "Thanks", exampleSentences: ["谢谢你的帮助。"] },
-  { hanzi: "再见", meaning: "Goodbye", exampleSentences: ["明天再见！"] },
+  { hanzi: "你好", pinyin: "nǐ hǎo", meaning: "Hello", exampleSentences: ["你好世界！"] },
+  { hanzi: "谢谢", pinyin: "xiè xiè", meaning: "Thanks", exampleSentences: ["谢谢你的帮助。"] },
+  { hanzi: "再见", pinyin: "zài jiàn", meaning: "Goodbye", exampleSentences: ["明天再见！"] },
 ];
 
 interface WordPracticeProps { }
@@ -59,6 +64,7 @@ const WordPractice: React.FC<WordPracticeProps> = () => {
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="text-center text-4xl font-semibold">{currentWord.hanzi}</div>
+        <div className="text-center text-xl">{currentWord.pinyin}</div>
 
         {showMeaning && (
           <div className="mt-4">
