@@ -125,6 +125,9 @@ const WritingPractice: React.FC<WritingPracticeProps> = () => {
               className="w-full"
             />
           </div>
+          <div className="text-sm text-gray-500 mt-1">
+            글자 수: {writingSample.length}
+          </div>
         </div>
 
         <div className="flex justify-end gap-2">
@@ -150,4 +153,3 @@ const WritingPractice: React.FC<WritingPracticeProps> = () => {
 };
 
 export default WritingPractice;
-
