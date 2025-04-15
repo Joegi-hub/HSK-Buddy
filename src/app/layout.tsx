@@ -37,7 +37,7 @@ export default function RootLayout({
       <div className="absolute top-2 right-2">
         <DropdownMenu>
           <DropdownMenuTrigger>
-            언어 선택
+            🌐
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             {languages.map(lang => (
@@ -51,3 +51,4 @@ export default function RootLayout({
     </html>
   );
 }
+
