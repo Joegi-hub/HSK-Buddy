@@ -159,7 +159,7 @@ const WordInputForm: React.FC<WordInputFormProps> = () => {
               예시 문장 추가
             </Button>
           </div>
-          <Button type="submit">제출</Button>
+          <Button type="submit">저장</Button>
         </form>
       </CardContent>
     </Card>
