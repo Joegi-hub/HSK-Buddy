@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
+import { useSearchParams } from 'next/navigation';
 
 const locales = [
   { locale: 'ko', label: '한국어' },
@@ -21,12 +22,13 @@ const locales = [
 const LanguageSwitcher = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
 
   const handleLocaleChange = (newLocale: string) => {
-    const newPathname = pathname
-      .replace(/^\/([^\/]+)/, `/${newLocale}`);
+    const params = new URLSearchParams(searchParams);
+    params.set('locale', newLocale);
 
-    router.push(newPathname);
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   return (
