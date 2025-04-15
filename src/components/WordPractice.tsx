@@ -64,25 +64,27 @@ const WordPractice: React.FC<WordPracticeProps> = () => {
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
         <div className="text-center text-4xl font-semibold">{currentWord.hanzi}</div>
-        <div className="text-center text-xl">{currentWord.pinyin}</div>
 
         {showMeaning && (
-          <div className="mt-4">
-            <div className="font-bold">의미:</div>
-            <div>{currentWord.meaning}</div>
-            <div className="mt-2 font-bold">예시 문장:</div>
-            <ul>
-              {currentWord.exampleSentences.map((sentence, index) => (
-                <li key={index}>{sentence}</li>
-              ))}
-            </ul>
-          </div>
+          <>
+            <div className="text-center text-xl">{currentWord.pinyin}</div>
+            <div className="mt-4">
+              <div className="font-bold">의미:</div>
+              <div>{currentWord.meaning}</div>
+              <div className="mt-2 font-bold">예시 문장:</div>
+              <ul>
+                {currentWord.exampleSentences.map((sentence, index) => (
+                  <li key={index}>{sentence}</li>
+                ))}
+              </ul>
+            </div>
+          </>
         )}
 
         <div className="flex justify-center gap-4 mt-4">
           <Button variant="outline" onClick={() => setShowMeaning(!showMeaning)}>
             <Eye className="w-4 h-4 mr-2" />
-            {showMeaning ? "의미 & 예시 보기" : "숨기기"}
+            {showMeaning ? "숨기기" : "의미 & 예시 보기"}
           </Button>
         </div>
 
