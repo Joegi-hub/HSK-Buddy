@@ -108,7 +108,7 @@ const WritingPractice: React.FC<WritingPracticeProps> = () => {
           </div>
           <Button variant="secondary" onClick={handleRefreshWords}>
             <RefreshCcw className="w-4 h-4 mr-2" />
-            단어 갱신
+            새로고침
           </Button>
         </div>
 
