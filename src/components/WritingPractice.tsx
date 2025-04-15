@@ -137,7 +137,6 @@ const WritingPractice: React.FC<WritingPracticeProps> = () => {
             삭제
           </Button>
         </div>
-        <Button onClick={handleGetFeedback}>AI 피드백 받기</Button>
 
         {feedback && (
           <div className="mt-4">
@@ -151,3 +150,4 @@ const WritingPractice: React.FC<WritingPracticeProps> = () => {
 };
 
 export default WritingPractice;
+
